@@ -36,7 +36,7 @@ NetworkServiceResponse handleException(DioError e, StackTrace trace) {
       } else {
         return NetworkServiceResponse(
           data: errorData,
-          error: e.response?.data["message"] ??
+          error: e.response?.data["error"] ??
               "hmm!, Looks like we didn't get that right, please try again!",
         );
       }

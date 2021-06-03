@@ -44,10 +44,11 @@ class NetworkServiceImpl implements NetworkService {
 
   /// Add an interceptor to the internal network request handler
   registerInterceptor(BaseNetworkInterceptor interceptor) {
-    if (interceptor == null)
+    if (interceptor == null) {
       throw Exception(
         "Interceptor cannot be null",
       );
+    }
     if (_dio.interceptors.contains(interceptor)) return;
     _dio.interceptors.add(interceptor);
   }
