@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class ShortlyTextField extends StatelessWidget {
   final TextInputType inputType;
   final TextEditingController controller;
-  final double textSize;
   final double height;
   final double width;
   final double borderWidth;
@@ -26,7 +25,6 @@ class ShortlyTextField extends StatelessWidget {
       this.focusNode,
       this.inputType = TextInputType.text,
       this.borderWidth = 1.0,
-      this.textSize = 16.0,
       this.hint,
       this.errorMessage,
       this.hasFocus = false,
@@ -52,7 +50,7 @@ class ShortlyTextField extends StatelessWidget {
                 enabled: enabled,
                 style: TextStyle(
                   color: Theme.of(context).accentColor,
-                  fontSize: textSize,
+                  fontSize: 17,
                 ),
                 onChanged: onChanged ?? (_) {},
                 keyboardType: inputType,
@@ -60,13 +58,15 @@ class ShortlyTextField extends StatelessWidget {
                     hintText: hasError ? errorMessage : hint ?? "",
                     hintStyle: Theme.of(context).textTheme.bodyText2.copyWith(
                         fontSize: 16,
-                        color: hasError ? Colors.red : Colors.grey),
+                        color: hasError
+                            ? Theme.of(context).errorColor
+                            : Theme.of(context).disabledColor),
                     contentPadding: const EdgeInsets.all(14),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(4),
                       borderSide: BorderSide(
                         color: hasError
-                            ? Colors.red
+                            ? Theme.of(context).errorColor
                             : Theme.of(context).accentColor,
                         width: 1.4,
                         style: BorderStyle.solid,
@@ -76,7 +76,7 @@ class ShortlyTextField extends StatelessWidget {
                       borderRadius: BorderRadius.circular(4),
                       borderSide: BorderSide(
                         color: hasError
-                            ? Colors.red
+                            ? Theme.of(context).errorColor
                             : Theme.of(context).accentColor,
                         width: 1.4,
                         style: BorderStyle.solid,
