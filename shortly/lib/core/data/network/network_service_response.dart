@@ -39,10 +39,8 @@ enum NetworkResult {
 
 /// Intended for use in the remote datasource layer. Filter the type of error generated from the Network
 /// layer. The repository layer should listen specifically for
-/// `NetworkConnectivityException`s,and `NetworkConnectivityException`
+/// `ApiResponseException`s,and `NetworkConnectivityException`
 /// and handle the errors based on the api error message,
-/// e.g. `'not_found'`
-
 handleNetworkResponse(NetworkServiceResponse response) {
   if (response.result != NetworkResult.SUCCESS) {
     if (response.result == NetworkResult.FAILURE) {

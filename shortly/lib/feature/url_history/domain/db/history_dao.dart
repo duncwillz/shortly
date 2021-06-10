@@ -4,7 +4,7 @@ import 'package:shortly/core/data/database/db_config.dart';
 import 'history_table.dart';
 part 'history_dao.g.dart';
 
-/// Data Access Object for user-related data access.
+/// Data Access Object for history-related data access.
 /// Not to be used directly. It's used internally by the
 /// [HistoryLocalDataSource] layer
 @UseDao(tables: [
@@ -18,7 +18,7 @@ class HistoryDao extends DatabaseAccessor<LocalDatabaseConfig>
 
   Future<void> saveHistory(HistoryData _history) async {
     await deleteHistory(_history.shortLink);
-    return into(history)..insert(_history, mode: InsertMode.insertOrReplace);
+    return into(history).insert(_history, mode: InsertMode.insertOrReplace);
   }
 
   Future<void> deleteHistory(String historyId) =>

@@ -17,7 +17,6 @@ class BaseNetworkInterceptor extends InterceptorsWrapper {
   /// Get token from storage
   @override
   Future onRequest(RequestOptions options) async {
-    String deviceRegistrationToken;
     // ignore: unused_local_variable
     String authToken = "some_x_token_for_auth";
 
